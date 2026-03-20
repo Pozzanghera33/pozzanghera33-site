@@ -46,18 +46,18 @@
             position: relative;
         }
 
-        .logo {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 600;
-            color: var(--puddle-blue);
-            margin-bottom: 10px;
-            animation: bounce 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        /* Studio Logo Image */
+        .studio-logo {
+            max-width: clamp(200px, 40vw, 400px);
+            height: auto;
+            margin-bottom: 20px;
+            animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
             cursor: default;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0) scale(1, 1); }
-            50% { transform: translateY(-30px) scale(0.95, 1.05); }
+            50% { transform: translateY(-25px) scale(0.97, 1.03); }
         }
 
         .tagline {
@@ -104,9 +104,23 @@
         }
 
         /* Introduction */
+        .intro-container {
+            text-align: center;
+        }
+        
+        /* Casual Toy-Block Logo */
+        .casual-logo {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
         .intro-text {
             font-size: 1.15rem;
             color: #4a5568;
+            text-align: left;
         }
 
         /* Mimi's Profile */
@@ -122,18 +136,44 @@
             box-shadow: 0 15px 30px rgba(0, 168, 255, 0.05);
         }
 
-        .mimi-icon {
-            font-size: 4rem;
-            background: var(--boot-black);
-            color: white;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        /* Mimi Main Image (Say Hello) */
+        .mimi-main-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
             border-radius: 50%;
-            box-shadow: 0 12px 0 var(--puddle-blue);
+            background-color: var(--boot-black);
+            border: 6px solid var(--clean-white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             flex-shrink: 0;
+        }
+
+        .mimi-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        /* Mimi Gallery */
+        .mimi-gallery {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .mimi-thumb {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 20px;
+            background-color: #e3f2fd;
+            border: 3px solid var(--puddle-blue);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .mimi-thumb:hover {
+            transform: scale(1.1) rotate(5deg);
         }
 
         /* Game Spotlight */
@@ -210,29 +250,35 @@
     <div class="puddle-bg" style="width: 500px; height: 500px; bottom: 5%; right: -15%;"></div>
 
     <header>
-        <div style="font-size: 4rem; margin-bottom: 20px;">🥾💧</div>
-        <div class="logo">POZZANGHERA 33</div>
+        <img src="POZZANGHERA33_LOGO.png" alt="POZZANGHERA 33 Studio Logo" class="studio-logo">
         <p class="tagline">Jump into the Puddles of Creativity</p>
     </header>
 
     <div class="container">
         
         <section id="vision">
-            <h2>Our Vision</h2>
-            <div class="intro-text">
-                <p>Hi, I am <strong>MASTASHIO</strong>, the founder and character-leader of POZZANGHERA 33.</p>
-                <p>"Pozzanghera" means <strong>Puddle</strong> in Italian. We believe in the pure, unbridled joy of a child jumping into a rain puddle with their favorite boots on. No rules, just splashes of imagination.</p>
-                <p>Based in Osaka, Japan, we create indie games that blend chaotic physics with a unique sense of humor.</p>
+            <div class="intro-container">
+                <img src="Decal_POZZANGHERA 33 LOGO.png" alt="POZZANGHERA 33 Casual Logo" class="casual-logo">
+                <h2>Our Vision</h2>
+                <div class="intro-text">
+                    <p>Hi, I am <strong>MASTASHIO</strong>, the founder and character-leader of POZZANGHERA 33.</p>
+                    <p>"Pozzanghera" means <strong>Puddle</strong> in Italian. We believe in the pure, unbridled joy of a child jumping into a rain puddle with their favorite boots on. No rules, just splashes of imagination.</p>
+                    <p>Based in Osaka, Japan, we create indie games that blend chaotic physics with a unique sense of humor.</p>
+                </div>
             </div>
         </section>
 
         <section id="mimi">
             <h2>The Mascot: MIMI</h2>
             <div class="mimi-card">
-                <div class="mimi-icon">33</div>
-                <div style="flex: 1; min-width: 280px;">
+                <img src="MIMI_SayHello.png" alt="MIMI saying Hello" class="mimi-main-img">
+                <div class="mimi-info">
                     <h3>MIMI (Thirty-Three)</h3>
                     <p>Mimi is a mysterious spirit with ears shaped like the number 33. A dark silhouette born from intuition, guiding our studio through the depths of creativity. Playful, silent, and always ready for a splash.</p>
+                    <div class="mimi-gallery">
+                        <img src="MIMI_Standing.png" alt="MIMI Standing pose" class="mimi-thumb">
+                        <img src="MIMI_Sitting.png" alt="MIMI Sitting pose" class="mimi-thumb">
+                    </div>
                 </div>
             </div>
         </section>
