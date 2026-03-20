@@ -51,6 +51,8 @@
             max-width: clamp(200px, 40vw, 400px);
             height: auto;
             margin-bottom: 20px;
+            /* ここで、文字だけを際立たせるために、ドロップシャドウを少しだけ追加しました */
+            filter: drop-shadow(0 10px 15px rgba(0, 168, 255, 0.2));
             animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
             cursor: default;
         }
@@ -108,12 +110,12 @@
             text-align: center;
         }
         
-        /* Casual Toy-Block Logo */
+        /* カジュアルロゴ（ツミキ風）に変更 */
         .casual-logo {
             max-width: 100%;
             height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 25px; /* 角をさらに丸くしました */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* 影を柔らかく、広くしました */
             margin-bottom: 40px;
         }
 
@@ -258,7 +260,7 @@
         
         <section id="vision">
             <div class="intro-container">
-                <img src="Decal_POZZANGHERA 33 LOGO.png" alt="POZZANGHERA 33 Casual Logo" class="casual-logo">
+                <img src="POZZANGHERA_CASUAL_LOGO.png" alt="POZZANGHERA 33 Casual Logo" class="casual-logo">
                 <h2>Our Vision</h2>
                 <div class="intro-text">
                     <p>Hi, I am <strong>MASTASHIO</strong>, the founder and character-leader of POZZANGHERA 33.</p>
