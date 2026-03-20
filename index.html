@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POZZANGHERA 33 | Jump into the Puddles of Creativity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --puddle-blue: #00a8ff;
+            --splash-blue: #7ed6df;
+            --clean-white: #ffffff;
+            --boot-black: #2f3640;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', 'Noto Sans JP', sans-serif;
+            background-color: var(--clean-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Puddles */
+        .puddle-bg {
+            position: fixed;
+            z-index: -1;
+            background: var(--puddle-blue);
+            filter: blur(60px);
+            opacity: 0.12;
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
+        header {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at bottom, #e1f5fe 0%, #ffffff 80%);
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 600;
+            color: var(--puddle-blue);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+            cursor: default;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1, 1); }
+            50% { transform: translateY(-30px) scale(0.95, 1.05); }
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--boot-black);
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 25px;
+        }
+
+        section {
+            margin-bottom: 120px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--puddle-blue);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 6px;
+            background: var(--splash-blue);
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+
+        /* Introduction */
+        .intro-text {
+            font-size: 1.15rem;
+            color: #4a5568;
+        }
+
+        /* Mimi's Profile */
+        .mimi-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e1f5fe 100%);
+            border-radius: 40px;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            border: 2px solid rgba(0, 168, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 168, 255, 0.05);
+        }
+
+        .mimi-icon {
+            font-size: 4rem;
+            background: var(--boot-black);
+            color: white;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0 12px 0 var(--puddle-blue);
+            flex-shrink: 0;
+        }
+
+        /* Game Spotlight */
+        .game-card {
+            background: var(--boot-black);
+            color: white;
+            border-radius: 40px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .game-card h3 {
+            color: #ff7675;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #ff7675;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* Call to Action */
+        .btn {
+            display: inline-block;
+            background: var(--puddle-blue);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: 30px;
+            box-shadow: 0 6px 0 #0097e6;
+        }
+
+        .btn:hover {
+            transform: scale(1.05) rotate(-1deg);
+            background: var(--splash-blue);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 0.9rem;
+            color: #a0aec0;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .osaka-badge {
+            font-size: 0.8rem;
+            color: #cbd5e0;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="puddle-bg" style="width: 400px; height: 400px; top: 5%; left: -10%;"></div>
+    <div class="puddle-bg" style="width: 500px; height: 500px; bottom: 5%; right: -15%;"></div>
+
+    <header>
+        <div style="font-size: 4rem; margin-bottom: 20px;">🥾💧</div>
+        <div class="logo">POZZANGHERA 33</div>
+        <p class="tagline">Jump into the Puddles of Creativity</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="vision">
+            <h2>Our Vision</h2>
+            <div class="intro-text">
+                <p>Hi, I am <strong>MASTASHIO</strong>, the founder and character-leader of POZZANGHERA 33.</p>
+                <p>"Pozzanghera" means <strong>Puddle</strong> in Italian. We believe in the pure, unbridled joy of a child jumping into a rain puddle with their favorite boots on. No rules, just splashes of imagination.</p>
+                <p>Based in Osaka, Japan, we create indie games that blend chaotic physics with a unique sense of humor.</p>
+            </div>
+        </section>
+
+        <section id="mimi">
+            <h2>The Mascot: MIMI</h2>
+            <div class="mimi-card">
+                <div class="mimi-icon">33</div>
+                <div style="flex: 1; min-width: 280px;">
+                    <h3>MIMI (Thirty-Three)</h3>
+                    <p>Mimi is a mysterious spirit with ears shaped like the number 33. A dark silhouette born from intuition, guiding our studio through the depths of creativity. Playful, silent, and always ready for a splash.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="project">
+            <div class="game-card">
+                <span class="status-badge">Now Developing</span>
+                <h3>Dead Before Work:<br>The Commute</h3>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
+                    An American salaryman vs. the laws of physics.<br>
+                    Experience the ultimate "High-Tension Ragdoll Gag Game" where surviving the commute is harder than the job itself.
+                </p>
+                <a href="https://itch.io" class="btn">Play on itch.io</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 POZZANGHERA 33 - Lead by MASTASHIO</p>
+        <div class="osaka-badge">Proudly Independent. Crafted in Osaka, Japan.</div>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { threshold: 0.15 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
