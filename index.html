@@ -46,15 +46,16 @@
             position: relative;
         }
 
-        /* Studio Logo Image */
+        /* Studio Logo Image - クッキリ＆キラキラ版 */
         .studio-logo {
-            max-width: clamp(200px, 40vw, 400px);
-            height: auto;
-            margin-bottom: 20px;
-            /* ここで、文字だけを際立たせるために、ドロップシャドウを少しだけ追加しました */
-            filter: drop-shadow(0 10px 15px rgba(0, 168, 255, 0.2));
-            animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
-            cursor: default;
+        max-width: clamp(200px, 40vw, 400px);
+        height: auto;
+        margin-bottom: 20px;
+        /* 白文字を浮かび上がらせるための青い光の影 */
+        filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.4)) 
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+        animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+        cursor: default;
         }
 
         @keyframes bounce {
