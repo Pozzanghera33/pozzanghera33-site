@@ -46,16 +46,15 @@
             position: relative;
         }
 
-        /* Studio Logo Image - クッキリ＆キラキラ版 */
+        /* Studio Logo Image */
         .studio-logo {
-        max-width: clamp(200px, 40vw, 400px);
-        height: auto;
-        margin-bottom: 20px;
-        /* 白文字を浮かび上がらせるための青い光の影 */
-        filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.4)) 
-            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
-        animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
-        cursor: default;
+            max-width: clamp(200px, 40vw, 400px);
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(0, 168, 255, 0.4)) 
+                    drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+            animation: bounce 2.5s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+            cursor: default;
         }
 
         @keyframes bounce {
@@ -68,6 +67,27 @@
             color: var(--boot-black);
             font-weight: 400;
             opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        /* Studio Navigation (New!) */
+        .studio-nav {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .studio-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: opacity 0.3s, color 0.3s;
+        }
+        .studio-nav a:hover {
+            opacity: 1;
+            color: var(--puddle-blue);
         }
 
         /* Content Sections */
@@ -111,12 +131,11 @@
             text-align: center;
         }
         
-        /* カジュアルロゴ（ツミキ風）に変更 */
         .casual-logo {
             max-width: 100%;
             height: auto;
-            border-radius: 25px; /* 角をさらに丸くしました */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15); /* 影を柔らかく、広くしました */
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             margin-bottom: 40px;
         }
 
@@ -139,7 +158,6 @@
             box-shadow: 0 15px 30px rgba(0, 168, 255, 0.05);
         }
 
-        /* Mimi Main Image (Say Hello) */
         .mimi-main-img {
             width: 150px;
             height: 150px;
@@ -156,7 +174,6 @@
             min-width: 280px;
         }
 
-        /* Mimi Gallery */
         .mimi-gallery {
             display: flex;
             gap: 15px;
@@ -179,25 +196,20 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* Game Spotlight */
-        .game-card {
-            background: var(--boot-black);
-            color: white;
+        /* Dead Before Work Section (New!) */
+        .dbw-section {
+            background: #fafafa;
             border-radius: 40px;
             padding: 60px 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid #edf2f7;
         }
-
-        .game-card h3 {
-            color: #ff7675;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+        .dbw-section h3 {
+            font-size: 2.2rem;
+            color: var(--boot-black);
+            margin-bottom: 10px;
             font-family: 'Fredoka', sans-serif;
         }
-
         .status-badge {
             display: inline-block;
             background: #ff7675;
@@ -208,6 +220,43 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
+        }
+        .dbw-text {
+            font-size: 1.15rem;
+            color: #4a5568;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+        .dbw-gif-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .dbw-gif-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 2px solid #edf2f7;
+        }
+        .dbw-gif-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Responsive grid for GIFs */
+        @media (max-width: 768px) {
+            .dbw-gif-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .dbw-gif-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Call to Action */
@@ -221,7 +270,6 @@
             font-weight: 600;
             font-size: 1.3rem;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            margin-top: 30px;
             box-shadow: 0 6px 0 #0097e6;
         }
 
@@ -255,6 +303,12 @@
     <header>
         <img src="POZZANGHERA33_LOGO.png" alt="POZZANGHERA 33 Studio Logo" class="studio-logo">
         <p class="tagline">Jump into the Puddles of Creativity</p>
+        
+        <nav class="studio-nav">
+            <a href="#vision">Vision</a>
+            <a href="#mimi">MIMI</a>
+            <a href="#dbw-game">Dead Before Work</a>
+        </nav>
     </header>
 
     <div class="container">
@@ -286,14 +340,29 @@
             </div>
         </section>
 
-        <section id="project">
-            <div class="game-card">
-                <span class="status-badge">Now Developing</span>
-                <h3>Dead Before Work:<br>The Commute</h3>
-                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px;">
-                    An American salaryman vs. the laws of physics.<br>
-                    Experience the ultimate "High-Tension Ragdoll Gag Game" where surviving the commute is harder than the job itself.
-                </p>
+        <section id="dbw-game" class="dbw-section">
+            <span class="status-badge">Now Developing</span>
+            <h3>Dead Before Work:<br>The Commute</h3>
+            
+            <div class="dbw-text">
+                <p><strong>An American salaryman vs. the laws of physics. Survive the ultimate ragdoll commute!</strong></p>
+                <p>Welcome to the daily grind, but with a chaotic twist! Meet our salaryman hero, Archie, struggling to reach the office in one piece.</p>
+                <p>From unexpected explosions to slippery bananas, every step is a hilarious disaster. Can you survive the commute, or will you be "Dead Before Work"? Experience the high-tension ragdoll gag game.</p>
+            </div>
+            
+            <div class="dbw-gif-grid">
+                <div class="dbw-gif-item">
+                    <img src="dbw_death_001.gif" alt="Dead Before Work Death Replay 001" loading="lazy">
+                </div>
+                <div class="dbw-gif-item">
+                    <img src="dbw_death_002.gif" alt="Dead Before Work Death Replay 002" loading="lazy">
+                </div>
+                <div class="dbw-gif-item">
+                    <img src="dbw_death_003.gif" alt="Dead Before Work Death Replay 003" loading="lazy">
+                </div>
+            </div>
+            
+            <div class="game-action">
                 <a href="https://itch.io" class="btn">Play on itch.io</a>
             </div>
         </section>
