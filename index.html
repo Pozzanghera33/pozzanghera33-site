@@ -10,7 +10,7 @@
             --puddle-blue: #00a8ff;
             --splash-blue: #7ed6df;
             --clean-white: #ffffff;
-            --boot-black: #1a1c20; /* より深く、締まった黒へ */
+            --boot-black: #1a1c20;
             --text-dark: #2c3e50;
             --accent-red: #ff7675;
         }
@@ -104,7 +104,7 @@
         }
         .mimi-thumb:hover { transform: scale(1.1) rotate(5deg); }
 
-        /* DBW Section - カッコいい黒カード版 */
+        /* DBW Section */
         .dbw-section {
             background: var(--boot-black);
             border-radius: 50px; padding: 60px 40px; text-align: center;
@@ -126,10 +126,9 @@
             border-left: 4px solid var(--puddle-blue); padding-left: 20px;
         }
 
-        /* 2列×3個のGIFグリッド */
         .dbw-gif-grid {
             display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 25px; /* 少し余裕を持たせてボタンへ */
         }
         .dbw-gif-item {
             aspect-ratio: 16 / 9; background: #000; border-radius: 20px;
@@ -137,11 +136,18 @@
             transition: 0.3s;
         }
         .dbw-gif-item:hover { transform: scale(1.03); border-color: var(--puddle-blue); }
-        .dbw-gif-item img {
-            width: 100%; height: 100%; object-fit: cover; /* サイズばらつき補正 */
-        }
+        .dbw-gif-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ライトボックス（拡大表示） */
+        /* 追加したExploreボタンのスタイル */
+        .btn-explore {
+            display: inline-block; background: var(--accent-red); color: white;
+            padding: 14px 40px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; font-size: 1.1rem; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 0 #e66767; margin-bottom: 50px;
+            border: 2px solid transparent;
+        }
+        .btn-explore:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(255, 118, 117, 0.4); border-color: white; }
+
         #lightbox {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 1000; display: none;
@@ -149,19 +155,10 @@
         }
         #lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; border: 3px solid white; }
 
-        .btn {
-            display: inline-block; background: var(--puddle-blue); color: white;
-            padding: 18px 50px; border-radius: 60px; text-decoration: none;
-            font-weight: 600; font-size: 1.3rem; transition: 0.3s;
-            box-shadow: 0 6px 0 #0097e6;
-        }
-        .btn:hover { transform: scale(1.05); background: var(--splash-blue); }
-
         footer {
             text-align: center; padding: 60px 20px; font-size: 0.9rem;
             color: #a0aec0; border-top: 1px solid #edf2f7;
         }
-        .osaka-badge { font-size: 0.8rem; color: #cbd5e0; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -213,18 +210,16 @@
         </section>
 
         <section id="dbw-game" class="dbw-section">
-    <span class="status-badge" style="background: #27ae60;">Now Released (Early Access)</span>
-    <h3>Dead Before Work:<br>The Commute</h3>
-    
-    <div class="dbw-text">
-        <p><strong>The wait is over. Jump into the chaotic puddle today!</strong></p>
-        <p>Headline: <strong>NOW RELEASED — Step Into the Puddle.</strong></p>
-        <p><strong>An American salaryman vs. the laws of physics. Survive the ultimate ragdoll commute!</strong></p>
-        <p>Experience high-fidelity visuals (Unity 6 HDRP) and physics-driven chaos. Born from a soul seeking freedom (5) and a mission to create (9), this is our first step toward building a new legacy.</p>
-    </div>
-
-           
+            <span class="status-badge" style="background: #27ae60;">Now Released (Early Access)</span>
+            <h3>Dead Before Work:<br>The Commute</h3>
             
+            <div class="dbw-text">
+                <p><strong>The wait is over. Jump into the chaotic puddle today!</strong></p>
+                <p>Headline: <strong>NOW RELEASED — Step Into the Puddle.</strong></p>
+                <p><strong>An American salaryman vs. the laws of physics. Survive the ultimate ragdoll commute!</strong></p>
+                <p>Experience high-fidelity visuals (Unity 6 HDRP) and physics-driven chaos. Born from a soul seeking freedom (5) and a mission to create (9), this is our first step toward building a new legacy.</p>
+            </div>
+
             <div class="dbw-gif-grid">
                 <div class="dbw-gif-item" onclick="openLightbox('dbw_death_001.gif')">
                     <img src="dbw_death_001.gif" alt="Death 001" loading="lazy">
@@ -246,22 +241,25 @@
                 </div>
             </div>
             
+            <a href="trap-collection.html" class="btn-explore">Explore More Traps →</a>
+            
             <div class="game-action">
-               <div style="margin-bottom: 40px; display: flex; justify-content: center;">
-            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
-                <iframe frameborder="0" src="https://itch.io/embed/4332730?linkback=true&amp;bg_color=2c3e50&amp;fg_color=f6f7f6&amp;link_color=ff4500" width="552" height="167">
-                    <a href="https://pozzanghera33.itch.io/dead-before-work-the-commute">DEAD BEFORE WORK: The Commute by POZZANGHERA33</a>
-                </iframe>
-            </div>
-        </div>
-        
-        <div style="margin: 30px auto; max-width: 400px; padding: 25px; border: 2px dashed rgba(255,255,255,0.15); border-radius: 30px; background: rgba(255,255,255,0.03);">
-            <p style="color: #ff4500; font-weight: 700; margin-bottom: 15px; font-size: 1.1rem; letter-spacing: 1px;">🔥 WATCH NEW DEATH REPLAYS!</p>
-            <a href="https://www.youtube.com/channel/UCbbm3LfZGIfNmZlyQmK-P5w" target="_blank" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.3s; background: #fff; color: #000; padding: 12px 20px; border-radius: 50px; font-weight: 700;">
-                <svg width="24" height="24" fill="#ff0000" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                YouTube Channel
-            </a>
-        </div>
+                <div style="margin-bottom: 40px; display: flex; justify-content: center;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                        <iframe frameborder="0" src="https://itch.io/embed/4332730?linkback=true&amp;bg_color=2c3e50&amp;fg_color=f6f7f6&amp;link_color=ff4500" width="552" height="167">
+                            <a href="https://pozzanghera33.itch.io/dead-before-work-the-commute">DEAD BEFORE WORK: The Commute by POZZANGHERA33</a>
+                        </iframe>
+                    </div>
+                </div>
+                
+                <div style="margin: 30px auto; max-width: 450px; padding: 25px; border: 2px dashed rgba(255,255,255,0.15); border-radius: 30px; background: rgba(255,255,255,0.03);">
+                    <p style="color: #ff4500; font-weight: 700; margin-bottom: 15px; font-size: 1.1rem; letter-spacing: 1px;">🔥 DISCOVER SHORTS & REPLAYS</p>
+                    <a href="replays.html" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 12px; transition: 0.3s; background: #fff; color: #000; padding: 14px 25px; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+                        <svg width="24" height="24" fill="#ff0000" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        Death Replay Gallery
+                    </a>
+                    <p style="font-size: 0.8rem; color: #718096; margin-top: 15px;">Watch Archie's most chaotic moments.</p>
+                </div>
 
                 <p style="font-size: 0.9rem; color: #718096; margin-top: 25px; font-style: italic;">
                     *Planned for release on <strong>Steam</strong> following the itch.io launch.
@@ -270,27 +268,26 @@
         </section>
 
         <section id="dev-log" style="text-align: center;">
-    <h2>To Our Players</h2>
-    <div class="mimi-card" style="text-align: left; background: #fff;">
-        <div class="mimi-info">
-            <h3>The Journey to 1.0</h3>
-            <p>We've just jumped into the puddle, and the ripples are just beginning. POZZANGHERA 33 is committed to expanding Archie's world with more stages, traps, and the upcoming "Create Mode".</p>
-            <p>Read our full development roadmap and a personal message from MASTASHIO about the future of this studio.</p>
-            <a href="roadmap.html" style="color: var(--puddle-blue); font-weight: bold; text-decoration: none;">View Roadmap & Future Vision →</a>
-        </div>
-    </div>
-</section>
+            <h2>To Our Players</h2>
+            <div class="mimi-card" style="text-align: left; background: #fff;">
+                <div class="mimi-info">
+                    <h3>The Journey to 1.0</h3>
+                    <p>We've just jumped into the puddle, and the ripples are just beginning. POZZANGHERA 33 is committed to expanding Archie's world with more stages, traps, and the upcoming "Create Mode".</p>
+                    <p>Read our full development roadmap and a personal message from MASTASHIO about the future of this studio.</p>
+                    <a href="roadmap.html" style="color: var(--puddle-blue); font-weight: bold; text-decoration: none;">View Roadmap & Future Vision →</a>
+                </div>
+            </div>
+        </section>
 
     </div>
 
     <footer>
-    <p>&copy; 2026 POZZANGHERA 33 - Lead by MASTASHIO</p>
-    <p><a href="commercial-disclosure.html" style="color: #cbd5e0; text-decoration: none; font-size: 0.7rem;">Commercial Disclosure</a></p>
-    <div class="osaka-badge">Proudly Independent. Crafted in Osaka, Japan.</div>
-</footer>
+        <p>&copy; 2026 POZZANGHERA 33 - Lead by MASTASHIO</p>
+        <p><a href="commercial-disclosure.html" style="color: #cbd5e0; text-decoration: none; font-size: 0.7rem;">Commercial Disclosure</a></p>
+        <div class="osaka-badge">Proudly Independent. Crafted in Osaka, Japan.</div>
+    </footer>
 
     <script>
-        // セクションの表示アニメーション
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -298,7 +295,6 @@
         }, { threshold: 0.15 });
         document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-        // ライトボックス拡大表示用
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
