@@ -1,1 +1,199 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trap Collection | POZZANGHERA 33</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --puddle-blue: #00a8ff;
+            --boot-black: #1a1c20;
+            --clean-white: #ffffff;
+            --accent-red: #ff7675;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Fredoka', 'Noto Sans JP', sans-serif;
+            background-color: var(--boot-black); /* コレクションが映える黒背景 */
+            color: var(--clean-white);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #2c3e50, var(--boot-black));
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--puddle-blue);
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .back-link:hover { transform: translateX(-5px); color: var(--clean-white); }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+        }
+
+        .subtitle {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Grid System */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .trap-grid {
+            display: grid;
+            /* 基本3列、画面が狭いと2列、さらに狭いと1列 */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .trap-item {
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: zoom-in;
+            border: 2px solid rgba(255,255,255,0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .trap-item:hover {
+            transform: scale(1.02);
+            border-color: var(--puddle-blue);
+            box-shadow: 0 10px 30px rgba(0, 168, 255, 0.3);
+        }
+
+        .trap-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 連番ラベルを表示したい場合（任意） */
+        .trap-item::after {
+            content: attr(data-id);
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            color: #fff;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        #lightbox img {
+            max-width: 95%;
+            max-height: 85%;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border: 2px solid var(--puddle-blue);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            opacity: 0.5;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .trap-grid {
+                grid-template-columns: repeat(2, 1fr); /* スマホで2列 */
+                gap: 10px;
+            }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img src="" id="lightbox-img">
+    </div>
+
+    <header>
+        <a href="index.html" class="back-link">← Back to Studio</a>
+        <h1>TRAP COLLECTION</h1>
+        <p class="subtitle">Dead Before Work: The Commute - Death Replays</p>
+    </header>
+
+    <div class="container">
+        <div class="trap-grid" id="gif-container">
+            </div>
+    </div>
+
+    <footer>
+        &copy; 2026 POZZANGHERA 33
+    </footer>
+
+    <script>
+        /**
+         * 【拡張方法】
+         * 新しいGIFを追加した時は、下の「totalGifs」の数字を増やすだけ！
+         * 例: dbw_death_013.gif を追加したら 13 に変更。
+         */
+        const totalGifs = 12; 
+        const container = document.getElementById('gif-container');
+
+        for (let i = 1; i <= totalGifs; i++) {
+            // 数字を 001, 002 形式に変換
+            const id = String(i).padStart(3, '0');
+            const fileName = `dbw_death_${id}.gif`;
+
+            // HTML要素の作成
+            const item = document.createElement('div');
+            item.className = 'trap-item';
+            item.setAttribute('data-id', `#${id}`);
+            item.onclick = () => openLightbox(fileName);
+
+            const img = document.createElement('img');
+            img.src = fileName;
+            img.alt = `Death Replay ${id}`;
+            img.loading = 'lazy'; // 遅延読み込みで動作を軽くする
+
+            item.appendChild(img);
+            container.appendChild(item);
+        }
+
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
