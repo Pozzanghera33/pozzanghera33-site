@@ -1,65 +1,202 @@
-
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow"> <title>Commercial Disclosure | POZZANGHERA 33</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Commercial Disclosure | POZZANGHERA 33</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; line-height: 1.8; color: #333; max-width: 800px; margin: 0 auto; }
-        h1 { border-bottom: 2px solid #00a8ff; padding-bottom: 10px; font-size: 1.5rem; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #eee; padding: 15px; text-align: left; font-size: 0.9rem; }
-        th { background: #f9f9f9; width: 35%; color: #666; }
-        .confidential { color: #2c3e50; font-weight: bold; }
+        :root {
+            --puddle-blue: #00a8ff;
+            --text-dark: #2c3e50;
+            --bg-light: #f9f9f9;
+            --border-color: #eee;
+        }
+
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Noto Sans JP', sans-serif; 
+            padding: 40px 20px; 
+            line-height: 1.8; 
+            color: var(--text-dark); 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background-color: #fff;
+        }
+
+        h1 { 
+            border-bottom: 2px solid var(--puddle-blue); 
+            padding-bottom: 10px; 
+            font-size: 1.5rem; 
+            margin-bottom: 30px;
+        }
+
+        /* Tabs Styling */
+        .tab-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--puddle-blue);
+            background: transparent;
+            color: var(--puddle-blue);
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--puddle-blue);
+            color: white;
+        }
+
+        /* Language Content Toggle */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid var(--border-color); padding: 15px; text-align: left; font-size: 0.9rem; }
+        th { background: var(--bg-light); width: 35%; color: #666; font-weight: 600; }
+        .confidential { color: var(--text-dark); font-weight: bold; }
+        
+        .footer-nav { margin-top: 40px; }
+        .footer-nav a { color: var(--puddle-blue); text-decoration: none; font-weight: bold; }
+        .footer-nav a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            th, td { display: block; width: 100%; box-sizing: border-box; }
+            th { border-bottom: none; }
+        }
     </style>
 </head>
 <body>
-    <h1>特定商取引法に基づく表記 (Commercial Disclosure)</h1>
-    <table>
-        <tr>
-            <th>販売業者 / Seller</th>
-            <td>POZZANGHERA 33</td>
-        </tr>
-        <tr>
-            <th>代表責任者 / Representative</th>
-            <td class="confidential">Masatoshi Matsuo</td> </tr>
-        <tr>
-            <th>所在地 / Address</th>
-            <td>
-                請求があった場合、遅滞なく電子メールにより提供いたします。<br>
-               <small style="color: #999;">(Provided upon request via email without delay)</small>
-               
-            </td>
-        </tr>
-        <tr>
-            <th>電話番号 / Phone</th>
-            <td>請求があった場合、遅滞なく電子メールにより提供いたします。</td>
-        </tr>
-        <tr>
-            <th>メールアドレス / Email</th>
-            <td class="confidential">support@pozzanghera33.com</td>
-        </tr>
-        <tr>
-            <th>販売価格 / Price</th>
-            <td>各販売ページ（itch.io等）に表示された金額に基づきます。</td>
-        </tr>
-        <tr>
-            <th>商品代金以外の必要料金</th>
-            <td>インターネット接続料金、通信料金等はお客様の負担となります。</td>
-        </tr>
-        <tr>
-            <th>支払方法 / Payment</th>
-            <td>クレジットカード決済 (Credit Card)</td>
-        </tr>
-        <tr>
-            <th>商品の引渡時期 / Delivery</th>
-            <td>決済完了後、即時ダウンロード可能となります。</td>
-        </tr>
-        <tr>
-            <th>返品・交換・キャンセル</th>
-            <td>デジタルコンテンツの特性上、購入確定後の返品・返金には応じられません。</td>
-        </tr>
-    </table>
-    <p style="margin-top:30px;"><a href="index.html" style="color: #00a8ff; text-decoration: none;">← Back to Home</a></p>
+
+    <div class="tab-container">
+        <button class="tab-btn active" onclick="switchLang('eng')">ENG</button>
+        <button class="tab-btn" onclick="switchLang('jpn')">JPN</button>
+    </div>
+
+    <div id="eng-content" class="lang-content active">
+        <h1>Commercial Disclosure</h1>
+        <table>
+            <tr>
+                <th>Seller</th>
+                <td>POZZANGHERA 33</td>
+            </tr>
+            <tr>
+                <th>Representative</th>
+                <td class="confidential">Masatoshi Matsuo</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>Provided upon request via email without delay.</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>Provided upon request via email without delay.</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td class="confidential">support@pozzanghera33.com</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>As displayed on each sales page (itch.io, etc.).</td>
+            </tr>
+            <tr>
+                <th>Additional Charges</th>
+                <td>Internet connection and data charges are to be borne by the customer.</td>
+            </tr>
+            <tr>
+                <th>Payment Methods</th>
+                <td>Credit Card / Standard platform payments</td>
+            </tr>
+            <tr>
+                <th>Delivery Time</th>
+                <td>Immediate download after payment is completed.</td>
+            </tr>
+            <tr>
+                <th>Returns / Refunds</th>
+                <td>Due to the nature of digital content, all sales are final. We do not accept returns or provide refunds after purchase.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="jpn-content" class="lang-content">
+        <h1>特定商取引法に基づく表記</h1>
+        <table>
+            <tr>
+                <th>販売業者</th>
+                <td>POZZANGHERA 33</td>
+            </tr>
+            <tr>
+                <th>代表責任者</th>
+                <td class="confidential">松尾 昌紀</td>
+            </tr>
+            <tr>
+                <th>所在地</th>
+                <td>請求があった場合、遅滞なく電子メールにより提供いたします。</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td>請求があった場合、遅滞なく電子メールにより提供いたします。</td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td class="confidential">support@pozzanghera33.com</td>
+            </tr>
+            <tr>
+                <th>販売価格</th>
+                <td>各販売ページ（itch.io等）に表示された金額に基づきます。</td>
+            </tr>
+            <tr>
+                <th>商品代金以外の必要料金</th>
+                <td>インターネット接続料金、通信料金等はお客様の負担となります。</td>
+            </tr>
+            <tr>
+                <th>支払方法</th>
+                <td>クレジットカード決済</td>
+            </tr>
+            <tr>
+                <th>商品の引渡時期</th>
+                <td>決済完了後、即時ダウンロード可能となります。</td>
+            </tr>
+            <tr>
+                <th>返品・交換・キャンセル</th>
+                <td>デジタルコンテンツの特性上、購入確定後の返品・返金には応じられません。</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer-nav">
+        <a href="index.html">← Back to Home / ホームへ戻る</a>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            // Remove active class from all buttons and contents
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to selected elements
+            if (lang === 'eng') {
+                document.querySelector('button[onclick="switchLang(\'eng\')"]').classList.add('active');
+                document.getElementById('eng-content').classList.add('active');
+                document.documentElement.lang = "en";
+            } else {
+                document.querySelector('button[onclick="switchLang(\'jpn\')"]').classList.add('active');
+                document.getElementById('jpn-content').classList.add('active');
+                document.documentElement.lang = "ja";
+            }
+        }
+    </script>
 </body>
 </html>
