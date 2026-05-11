@@ -6,48 +6,22 @@
     <title>DevLog | POZZANGHERA 33</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --puddle-blue: #00a8ff;
-            --boot-black: #1a1c20;
-            --accent-red: #ff7675;
-        }
-        body {
-            margin: 0; font-family: 'Fredoka', sans-serif;
-            display: flex; height: 100vh; background: #f4f7f6;
-        }
-
-        /* 左側：記事リスト（サイドバー） */
-        .sidebar {
-            width: 300px; background: var(--boot-black); color: white;
-            display: flex; flex-direction: column; border-right: 4px solid var(--puddle-blue);
-        }
+        /* 前回のCSSをそのまま使用 */
+        :root { --puddle-blue: #00a8ff; --boot-black: #1a1c20; --accent-red: #ff7675; }
+        body { margin: 0; font-family: 'Fredoka', sans-serif; display: flex; height: 100vh; background: #f4f7f6; }
+        .sidebar { width: 300px; background: var(--boot-black); color: white; display: flex; flex-direction: column; border-right: 4px solid var(--puddle-blue); }
         .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid #333; }
-        .sidebar-header a { color: white; text-decoration: none; font-weight: 600; }
-
+        .sidebar-header a { color: white; text-decoration: none; font-weight: 600; opacity: 0.7; }
+        .sidebar-header a:hover { opacity: 1; }
         .log-list { overflow-y: auto; flex: 1; }
-        .log-item {
-            padding: 20px; border-bottom: 1px solid #333; cursor: pointer;
-            transition: 0.3s; position: relative;
-        }
+        .log-item { padding: 20px; border-bottom: 1px solid #333; cursor: pointer; transition: 0.3s; }
         .log-item:hover { background: #2c3e50; }
         .log-item.active { background: var(--puddle-blue); color: white; }
         .log-item .date { font-size: 0.8rem; opacity: 0.6; display: block; }
         .log-item .title { font-size: 1rem; font-weight: 600; margin-top: 5px; }
-
-        /* 右側：コンテンツ表示エリア */
         .content-area { flex: 1; overflow-y: auto; padding: 40px; background: white; }
-        
-        /* 記事の非表示設定 */
-        .devlog-article { display: none; max-width: 900px; margin: 0 auto; }
-        .devlog-article.active { display: block; animation: fadeIn 0.5s ease; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; height: 30vh; }
-            .content-area { height: 70vh; }
-        }
+        #logContent { max-width: 900px; margin: 0 auto; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -58,57 +32,58 @@
             <h2 style="color: var(--puddle-blue);">DevLog</h2>
         </div>
         <div class="log-list" id="logList">
-            <div class="log-item active" onclick="showArticle('v031')">
-                <span class="date">May 11, 2026</span>
-                <span class="title">v0.3.1: Combo System & NY Steam</span>
+
+            <div class="log-item" onclick="loadLog('v031', this)">
+                <span class="date">May 4, 2026</span>
+                <span class="title">v0.3.0: Character Fitting Room</span>
             </div>
-            <div class="log-item" onclick="showArticle('v030')">
+            
+            <div class="log-item" onclick="loadLog('v030', this)">
                 <span class="date">May 4, 2026</span>
                 <span class="title">v0.3.0: Character Fitting Room</span>
             </div>
 
-            <div class="log-item" onclick="showArticle('ea-launch')">
+            <div class="log-item" onclick="loadLog('ea-launch', this)">
                 <span class="date">January 1, 2026</span>
                 <span class="title">🚀 Early Access is LIVE!</span>
-    </div>
+            </div>
+
         </div>
     </aside>
 
     <main class="content-area" id="contentArea">
-    <div id="logContent">
-        <p style="text-align:center; color:#999; margin-top:100px;">Select a log from the sidebar to read.</p>
-    </div>
-</main>
+        <div id="logContent">
+            </div>
+    </main>
 
-<script>
-    async function loadLog(fileName, element) {
-        const contentArea = document.getElementById('logContent');
-        
-        try {
-            // logsフォルダ内のHTMLファイルを読み込む
-            const response = await fetch(`logs/${fileName}.html`);
-            if (!response.ok) throw new Error('File not found');
-            
-            const html = await response.text();
-            contentArea.innerHTML = html; // 中身を入れ替える
+    <script>
+        async function loadLog(fileName, element) {
+            const contentArea = document.getElementById('logContent');
+            try {
+                // ファイルを読み込み
+                const response = await fetch(`logs/${fileName}.html`);
+                if (!response.ok) throw new Error('File not found');
+                const html = await response.text();
+                
+                // コンテンツを入れ替え
+                contentArea.innerHTML = html;
 
-            // リストのactive表示の切り替え
-            document.querySelectorAll('.log-item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
+                // アクティブな項目の色を変える
+                document.querySelectorAll('.log-item').forEach(el => el.classList.remove('active'));
+                element.classList.add('active');
 
-            // スクロールをトップに戻す
-            document.getElementById('contentArea').scrollTop = 0;
-            
-        } catch (error) {
-            contentArea.innerHTML = `<p style="color:red;">Error loading log: ${error.message}</p>`;
+                // スクロールを一番上へ
+                document.getElementById('contentArea').scrollTop = 0;
+            } catch (error) {
+                contentArea.innerHTML = `<p style="color:red; padding:20px;">Error: Could not load the log file.</p>`;
+            }
         }
-    }
 
-    // ページ読み込み時に最新の記事を自動で表示させる場合（例：v030）
-    window.onload = () => {
-        const firstItem = document.querySelector('.log-item');
-        if(firstItem) firstItem.click();
-    };
-</script>
+        // ページを開いたときに自動で一番上の記事を表示する
+        window.onload = () => {
+            const firstItem = document.querySelector('.log-item');
+            if (firstItem) loadLog('v030', firstItem); // ここに最新のファイル名を書く
+        };
+    </script>
 </body>
 </html>
