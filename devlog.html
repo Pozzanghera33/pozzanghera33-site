@@ -66,36 +66,49 @@
                 <span class="date">May 4, 2026</span>
                 <span class="title">v0.3.0: Character Fitting Room</span>
             </div>
+
+            <div class="log-item" onclick="showArticle('ea-launch')">
+                <span class="date">January 1, 2026</span>
+                <span class="title">🚀 Early Access is LIVE!</span>
+    </div>
         </div>
     </aside>
 
     <main class="content-area" id="contentArea">
-        <div id="v031" class="devlog-article active">
-            <h1 style="color:var(--accent-red)">v0.3.1 Update</h1>
-            <p>Paste the gorgeous HTML here...</p>
-        </div>
+    <div id="logContent">
+        <p style="text-align:center; color:#999; margin-top:100px;">Select a log from the sidebar to read.</p>
+    </div>
+</main>
 
-        <div id="v030" class="devlog-article">
-            <h1>v0.3.0 Update</h1>
-            <p>Archive content here...</p>
-        </div>
-
-    </main>
-
-    <script>
-        function showArticle(id) {
-            // 全記事を非表示にする
-            document.querySelectorAll('.devlog-article').forEach(el => el.classList.remove('active'));
-            // 選択した記事を表示する
-            document.getElementById(id).classList.add('active');
+<script>
+    async function loadLog(fileName, element) {
+        const contentArea = document.getElementById('logContent');
+        
+        try {
+            // logsフォルダ内のHTMLファイルを読み込む
+            const response = await fetch(`logs/${fileName}.html`);
+            if (!response.ok) throw new Error('File not found');
             
-            // リストのactiveクラスを付け替える
+            const html = await response.text();
+            contentArea.innerHTML = html; // 中身を入れ替える
+
+            // リストのactive表示の切り替え
             document.querySelectorAll('.log-item').forEach(el => el.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-            
+            element.classList.add('active');
+
             // スクロールをトップに戻す
             document.getElementById('contentArea').scrollTop = 0;
+            
+        } catch (error) {
+            contentArea.innerHTML = `<p style="color:red;">Error loading log: ${error.message}</p>`;
         }
-    </script>
+    }
+
+    // ページ読み込み時に最新の記事を自動で表示させる場合（例：v030）
+    window.onload = () => {
+        const firstItem = document.querySelector('.log-item');
+        if(firstItem) firstItem.click();
+    };
+</script>
 </body>
 </html>
