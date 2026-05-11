@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLog | POZZANGHERA 33</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --puddle-blue: #00a8ff;
+            --boot-black: #1a1c20;
+            --accent-red: #ff7675;
+        }
+        body {
+            margin: 0; font-family: 'Fredoka', sans-serif;
+            display: flex; height: 100vh; background: #f4f7f6;
+        }
 
+        /* 左側：記事リスト（サイドバー） */
+        .sidebar {
+            width: 300px; background: var(--boot-black); color: white;
+            display: flex; flex-direction: column; border-right: 4px solid var(--puddle-blue);
+        }
+        .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid #333; }
+        .sidebar-header a { color: white; text-decoration: none; font-weight: 600; }
+
+        .log-list { overflow-y: auto; flex: 1; }
+        .log-item {
+            padding: 20px; border-bottom: 1px solid #333; cursor: pointer;
+            transition: 0.3s; position: relative;
+        }
+        .log-item:hover { background: #2c3e50; }
+        .log-item.active { background: var(--puddle-blue); color: white; }
+        .log-item .date { font-size: 0.8rem; opacity: 0.6; display: block; }
+        .log-item .title { font-size: 1rem; font-weight: 600; margin-top: 5px; }
+
+        /* 右側：コンテンツ表示エリア */
+        .content-area { flex: 1; overflow-y: auto; padding: 40px; background: white; }
+        
+        /* 記事の非表示設定 */
+        .devlog-article { display: none; max-width: 900px; margin: 0 auto; }
+        .devlog-article.active { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; height: 30vh; }
+            .content-area { height: 70vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html">← Back to Home</a>
+            <h2 style="color: var(--puddle-blue);">DevLog</h2>
+        </div>
+        <div class="log-list" id="logList">
+            <div class="log-item active" onclick="showArticle('v031')">
+                <span class="date">May 11, 2026</span>
+                <span class="title">v0.3.1: Combo System & NY Steam</span>
+            </div>
+            <div class="log-item" onclick="showArticle('v030')">
+                <span class="date">May 4, 2026</span>
+                <span class="title">v0.3.0: Character Fitting Room</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="content-area" id="contentArea">
+        <div id="v031" class="devlog-article active">
+            <h1 style="color:var(--accent-red)">v0.3.1 Update</h1>
+            <p>Paste the gorgeous HTML here...</p>
+        </div>
+
+        <div id="v030" class="devlog-article">
+            <h1>v0.3.0 Update</h1>
+            <p>Archive content here...</p>
+        </div>
+
+    </main>
+
+    <script>
+        function showArticle(id) {
+            // 全記事を非表示にする
+            document.querySelectorAll('.devlog-article').forEach(el => el.classList.remove('active'));
+            // 選択した記事を表示する
+            document.getElementById(id).classList.add('active');
+            
+            // リストのactiveクラスを付け替える
+            document.querySelectorAll('.log-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            // スクロールをトップに戻す
+            document.getElementById('contentArea').scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
