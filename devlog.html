@@ -9,13 +9,24 @@
         /* 前回のCSSをそのまま使用 */
         :root { --puddle-blue: #00a8ff; --boot-black: #1a1c20; --accent-red: #ff7675; }
         body { margin: 0; font-family: 'Fredoka', sans-serif; display: flex; height: 100vh; background: #f4f7f6; }
-        .sidebar { width: 300px; background: var(--boot-black); color: white; display: flex; flex-direction: column; border-right: 4px solid var(--puddle-blue); }
+        .sidebar {
+        width: 320px;
+        background: #1a1c20; /* ブーツの黒 */
+        color: white;
+        display: flex;
+        flex-direction: column;
+        border-right: 4px solid var(--puddle-blue);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.05);
+        }
         .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid #333; }
         .sidebar-header a { color: white; text-decoration: none; font-weight: 600; opacity: 0.7; }
         .sidebar-header a:hover { opacity: 1; }
         .log-list { overflow-y: auto; flex: 1; }
         .log-item { padding: 20px; border-bottom: 1px solid #333; cursor: pointer; transition: 0.3s; }
-        .log-item:hover { background: #2c3e50; }
+        .log-item:hover {
+            background: rgba(0, 168, 255, 0.2);
+            border-left: 5px solid var(--puddle-blue);
+        }
         .log-item.active { background: var(--puddle-blue); color: white; }
         .log-item .date { font-size: 0.8rem; opacity: 0.6; display: block; }
         .log-item .title { font-size: 1rem; font-weight: 600; margin-top: 5px; }
@@ -39,6 +50,21 @@
             box-shadow: 0 20px 50px rgba(0, 168, 255, 0.1);
             border: 2px solid #ffffff;
             min-height: 80vh;
+        }
+        /* 記事内の画像や動画が枠を突き破るのを防ぐ */
+        #logContent img, 
+        #logContent video, 
+        #logContent iframe {
+            max-width: 100% !important; /* 親要素の幅を超えない */
+            height: auto !important;    /* 比率を維持する */
+            border-radius: 15px;        /* 角を少し丸めて可愛く */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 浮かせて高級感を出す */
+        }
+        
+        /* 念のため、Itchの固定幅設定をリセットする */
+        #logContent div {
+            max-width: 100% !important;
+            width: auto !important;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
