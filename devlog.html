@@ -78,6 +78,12 @@
         </div>
         <div class="log-list" id="logList">
 
+
+            <div class="log-item" onclick="loadLog('v040', this)">
+                <span class="date">May 18, 2026</span>
+                <span class="title">v0.4.0: Creator Mode / TrapShop And Quadruple BOOM</span>
+            </div>
+            
             <div class="log-item" onclick="loadLog('v031', this)">
                 <span class="date">May 4, 2026</span>
                 <span class="title">v0.3.1: Upcoming Soon</span>
@@ -142,7 +148,7 @@
         // ページを開いたときに自動で一番上の記事を表示する
         window.onload = () => {
             const firstItem = document.querySelector('.log-item');
-            if (firstItem) loadLog('v031', firstItem); // ここに最新のファイル名を書く
+            if (firstItem) loadLog('v040', firstItem); // ここに最新のファイル名を書く
         };
     </script>
 </body>
