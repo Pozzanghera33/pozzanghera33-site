@@ -339,6 +339,11 @@
             </div>
 
             <div class="log-list" id="logList">
+                <div class="log-item" onclick="loadLog('v200', this)">
+                    <span class="date">Sep 20, 2026</span>
+                    <div class="title">v2.0.0: Major Update - WORDJONG & Sandbox Mode!</div>
+                </div>
+
                 <div class="log-item" onclick="loadLog('v100', this)">
                     <span class="date">Aug 8, 2026</span>
                     <div class="title">v1.0.0: Now Fully Released!!</div>
@@ -446,7 +451,7 @@
         // Auto load latest entry on startup
         window.addEventListener('DOMContentLoaded', () => {
             const firstItem = document.querySelector('.log-item');
-            if (firstItem) loadLog('v100', firstItem);
+            if (firstItem) loadLog('v200', firstItem);
         });
     </script>
 </body>
